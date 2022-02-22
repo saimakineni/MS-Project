@@ -1,7 +1,6 @@
-* {
+ * {
     box-sizing: border-box;
   }
-  
   body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
@@ -63,4 +62,6 @@
     background-color: #faf2f2;
     border-radius: 75px;
   }
+  
+
   

@@ -1,0 +1,2 @@
+-- SQLite
+Drop table matches;

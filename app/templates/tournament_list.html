@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href = "{{ url_for('static', filename='style.css') }}" />   
+        <style>
+            #tournaments_List table {
+            border-collapse: separate;
+            width: 25%;
+            }
+            #tournaments_List td, #tournaments_List th {
+                border-bottom: 1px solid #ddd;
+                padding: 8px;
+                border-radius:10px;
+                text-align: center;
+            }            
+            #tournaments_List tr:hover {background-color: rgb(65, 63, 63);}
+            #tournaments_List th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                background-color: #fff;
+                color: black;
+            }
+        </style>         
+    </head>
+    <body>
+        <div class="container">
+            <h1>Tennis Visualization</h1>
+            <h4>Select the tournaments to see the visualizations</h4>
+
+            <div class="row">
+                <div class="column">
+                    <a class="noDecoration" href = "{{ url_for('live_tournaments_list') }}">
+                        <div class="card">
+                            <h3>Live</h3>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="column">
+                    <a class="noDecoration" href = "{{ url_for('finished_tournaments') }}">
+                        <div class="card">
+                            <h3>Finished</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <br/><br/>
+            <div class="row">
+                <table id="tournaments_List" >
+                    <tr>
+                        <th>Tournaments</th>
+                    </tr>
+                    {% for row_index in x %}
+                    <tr>
+                        <td>{{ row_index }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+        </div>
+    </body>
+</html>

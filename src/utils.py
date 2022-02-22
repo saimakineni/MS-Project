@@ -45,6 +45,18 @@ def get_matches_list(df, size = True):
     if size:
         results.append(length)
     return results
+
+#Written by Sainadh to get tournment List
+def get_only_tournaments(live):
+    create_database()
+    if live:
+        tournaments = conn.select_data(tournament_sql(), ('live',))
+    elif not live:
+        tournaments = conn.select_data(tournament_sql(), ('finished',))
+    tournaments = pd.DataFrame(tournaments, columns = ['Tournament','Date','Round','Player_1','Player_2','file_name','index_date','won','result','status','url'])
+    tourn_list = tournaments['Tournament'].value_counts().index.to_list()
+    return tourn_list
+
 def get_tournaments(live):
     results = dict()
     create_database()

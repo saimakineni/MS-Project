@@ -31,3 +31,9 @@ $ pip install -r requirements.txt
 - Run elastic search using the command bin/elasticsearch
 - Run app.py and tennis.py files in two separate terminals
 - To scrape the data run scrapper.py file with specified arguments and view the website that is running in localhost. example:http://127.0.0.1:8080/ 
+
+
+
+cd "OneDrive\Desktop\MS Project\Tennis_Visualisation-main"
+.\venv\Scripts\activate
+.\bin\elasticsearch.bat

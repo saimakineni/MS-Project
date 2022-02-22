@@ -7,6 +7,11 @@ from src import utils
 def index():
     return render_template('index.html')
 
+@app.route("/live_tournaments_list")
+def live_tournaments_list():
+    tournament_list = utils.get_only_tournaments(live=True)
+    return render_template("tournament_list.html", title = ' Live Tournaments', x=tournament_list, matches_url = 'live_matches_list')
+
 @app.route("/live_tournaments")
 def live_tournaments():
     tournaments = utils.get_tournaments(live = True)

@@ -9,6 +9,7 @@ import csv
 import os
 from datetime import datetime, timedelta
 import json
+import ssl
  
 from db import db
 import es
@@ -19,7 +20,7 @@ def create_database():
     """
     global conn
     #conn = db('./data/db/matches.db')
-    conn = db('/Users/sravanthimalepati/Documents/working_project/Tennis_Visualisation-main/data/db/matches.db')
+    conn = db('/Users/Saina/OneDrive/Desktop/MS Project/Tennis_Visualisation-main/data/db/matches.db')
     conn.create_table(create_match_sql())
 
 def create_es_index():
@@ -193,13 +194,12 @@ def create_match_files(match_urls, current, force_write = False):
             write_data(file_name, fixed_data, current, match, finished_df)
         elif force_write:
             insert_data(fixed_data, file_name, 'finished', '', 'file_name')
-            finished_df[get_col_names()].to_csv(f'/Users/sravanthimalepati/Documents/working_project/Tennis_Visualisation-main/data/{file_name}.csv', index = False, header = True, mode='w')
+            finished_df[get_col_names()].to_csv(f'/Users/Saina/OneDrive/Desktop/MS Project/Tennis_Visualisation-main/data/{file_name}.csv', index = False, header = True, mode='w')
         time.sleep(0.5)
-
     return True
 
 def write_data(file_name, fixed_data, current, match, finished_df):
-    file_exists = os.path.exists(f'/Users/sravanthimalepati/Documents/working_project/Tennis_Visualisation-main/data/{file_name}.csv')
+    file_exists = os.path.exists(f'/Users/Saina/OneDrive/Desktop/MS Project/Tennis_Visualisation-main/data/{file_name}.csv')
     if not file_exists:
         record = dict()
         date_ = fixed_data['date']
@@ -224,7 +224,7 @@ def write_data(file_name, fixed_data, current, match, finished_df):
     if current:
         insert_data(fixed_data, file_name, 'live', match)
     if not file_exists or current:       
-        finished_df[get_col_names()].to_csv(f'/Users/sravanthimalepati/Documents/working_project/Tennis_Visualisation-main/data/{file_name}.csv', index = False, header = True, mode='w')
+        finished_df[get_col_names()].to_csv(f'/Users/Saina/OneDrive/Desktop/MS Project/Tennis_Visualisation-main/data/{file_name}.csv', index = False, header = True, mode='w')
     
 
 def get_matches(finished_url, date, current = False):
@@ -381,6 +381,7 @@ def get_menu_links(url):
     return url_list[0], url_list[1]
 
 def get_url(url):
+    ssl._create_default_https_context = ssl._create_unverified_context
     req = urlopen(url)
     html = str(req.read())
     soup = BeautifulSoup(html, 'html.parser')
