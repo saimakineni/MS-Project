@@ -12,6 +12,7 @@
                 padding: 8px;
                 border-radius:10px;
                 text-align: center;
+                color: white;
             }            
             #tournaments_List tr:hover {background-color: rgb(65, 63, 63);}
             #tournaments_List th {
@@ -37,7 +38,7 @@
                 </div>
 
                 <div class="column">
-                    <a class="noDecoration" href = "{{ url_for('finished_tournaments') }}">
+                    <a class="noDecoration" href = "{{ url_for('finished_tournaments_list') }}">
                         <div class="card">
                             <h3>Finished</h3>
                         </div>
@@ -50,10 +51,10 @@
                     <tr>
                         <th>Tournaments</th>
                     </tr>
-                    {% for row_index in x %}
-                    <tr>
-                        <td>{{ row_index }}</td>
-                    </tr>
+                    {% for row_index in x['list'] %}
+                        <tr>
+                            <td><a style="color:white;" href = "{{ url_for('tournament_matches',tournament = row_index, live=x['live'] ) }}">{{ row_index }}</a></td>
+                        </tr>
                     {% endfor %}
                 </table>
             </div>

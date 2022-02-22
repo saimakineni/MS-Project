@@ -9,12 +9,22 @@ def index():
 
 @app.route("/live_tournaments_list")
 def live_tournaments_list():
-    tournament_list = utils.get_only_tournaments(live=True)
-    return render_template("tournament_list.html", title = ' Live Tournaments', x=tournament_list, matches_url = 'live_matches_list')
+    tournamentDic={}
+    tournamentDic['list'] = utils.get_only_tournaments(live=True)
+    tournamentDic['live'] = True
+    return render_template("tournament_list.html", title = ' Live Tournaments', x=tournamentDic, matches_url = 'live_matches_list')
 
-@app.route("/live_tournaments")
-def live_tournaments():
-    tournaments = utils.get_tournaments(live = True)
+@app.route("/finished_tournaments_list")
+def finished_tournaments_list():
+    tournamentDic={}
+    tournamentDic['list'] = utils.get_only_tournaments(live=False)
+    tournamentDic['live'] = False
+    return render_template("tournament_list.html", title = 'Finished Tournaments', x = tournamentDic, matches_url = 'finished_matches_list')
+
+@app.route("/tournament_matches/<tournament>/<live>")
+def tournament_matches(tournament, live):
+    print(tournament, live)
+    tournaments = utils.get_tournaments(tournament, live)
     return render_template("tournament.html", title = 'Live Tournaments', tournaments = tournaments, matches_url = 'live_matches')
 
 @app.route("/finished_tournaments")

@@ -57,7 +57,7 @@ def get_only_tournaments(live):
     tourn_list = tournaments['Tournament'].value_counts().index.to_list()
     return tourn_list
 
-def get_tournaments(live):
+def get_tournaments(t,live):
     results = dict()
     create_database()
     if live:
@@ -65,11 +65,10 @@ def get_tournaments(live):
     elif not live:
         tournaments = conn.select_data(tournament_sql(), ('finished',))
     tournaments = pd.DataFrame(tournaments, columns = ['Tournament','Date','Round','Player_1','Player_2','file_name','index_date','won','result','status','url'])
-    tourn_list = tournaments['Tournament'].value_counts().index.to_list()
-    for tournament in tourn_list:
-        results[tournament] = get_matches_list(tournaments[tournaments['Tournament'] == tournament])
+    results[t] = get_matches_list(tournaments[tournaments['Tournament'] == t])
     conn.close()
     return results
+    
 def get_matches(tournament, live, **kwargs):
     results = dict()
     create_database()
