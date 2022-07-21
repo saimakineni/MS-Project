@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="column">
-                    <a class="noDecoration" href = "{{ url_for('finished_tournaments_list') }}">
+                    <a class="noDecoration" href = "{{ url_for('finished_tournaments_date_picker') }}">
                         <div class="card">
                             <h3>Finished</h3>
                         </div>
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <br/><br/>
-            <div class="row">
+            <div class="row" style="overflow-y:auto;">
                 <table id="tournaments_List" >
                     <tr>
                         <th>Tournaments</th>

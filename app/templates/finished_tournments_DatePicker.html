@@ -25,6 +25,32 @@
                     </a>
                 </div>
             </div>
+
+            <br/><br/>
+            <div class="row">
+                <table id="tournaments_date_picker" >
+                    <tr>
+                        <th>Select Dates</th>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td>
+                            <form method='POST' action="{{ url_for('finished_match_search') }}">
+                                <label for="start_date">Start Date:</label>
+                                <input type="date" name="Start_Date" id="sDate">
+                                <label for="end_date">End Date:</label>
+                                <input type="date" name="End_Date" id="eDate">
+                                <button type="submit">Submit</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
         </div>
     </body>
 </html>

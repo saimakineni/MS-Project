@@ -27,9 +27,9 @@
             <a class= 'home' href=#>{{ title }}</a>
             <a class ="right" href="{{ url_for('index') }}">Home</a>
             {% if title == 'Finished Tournaments' %}
-                <a class ="right" href="{{ url_for('live_tournaments') }}">Live Tournaments</a>
+                <a class ="right" href="{{ url_for('live_tournaments_list') }}">Live Tournaments</a>
             {% elif title == 'Live Tournaments' %}
-                <a class ="right" href="{{ url_for('finished_tournaments') }}">Finished Tournaments</a>
+                <a class ="right" href="{{ url_for('finished_tournaments_date_picker') }}">Finished Tournaments</a>
             {% endif %}
             <div class='search'>
                 <form method='POST' action="{{ url_for('search') }}">
@@ -52,7 +52,7 @@
                     <p>{{ results[-1] }} {% if results[-1] == 1 %}match{% else %}matches{% endif %} </p>
                 </div>
                 <div class="tags">
-                    <a href = "{{ url_for(matches_url, tournament = tournament) }}">
+                    <a href = "{{ url_for(matches_url, tournament = tournament, live='False') }}">
                         <div>View More</div>
                     </a>
                 </div>

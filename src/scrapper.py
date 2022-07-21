@@ -123,8 +123,9 @@ def insert_data(fixed_data, file_name, status, url, condition='file_name'):
 
     date = fixed_data['date']
     #print(date)
-    index_date = date.split(' ')[0] + '20'
+    index_date = date.split(' ')[0]
     index_date = index_date.split('.')
+    index_date[2] = '20' + index_date[2]
     index_date.reverse()
     index_date = '-'.join(index_date)
     result = get_result(fixed_data['result'])

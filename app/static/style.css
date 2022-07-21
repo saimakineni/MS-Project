@@ -63,5 +63,14 @@
     border-radius: 75px;
   }
   
-
+  .scrollbarhide{
+    overflow-y: scroll;
+  }
+  .scrollbarhide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbarhide{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
   
