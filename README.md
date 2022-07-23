@@ -26,14 +26,16 @@ $ source venv/bin/activate
 ```bash
 $ pip install -r requirements.txt
 ```
+
+Change the paths in scrapper.py files for sample_tennis_data_table.csv file.
+Also change any other paths pointing to local folders.
+
 <b> How to run the project </b>
 - Download the elastic search https://www.elastic.co/downloads/elasticsearch choosing required platform.
-- Run elastic search using the command bin/elasticsearch
+- Run elastic search using the command .\bin\elasticsearch.bat
 - Run app.py and tennis.py files in two separate terminals
 - To scrape the data run scrapper.py file with specified arguments and view the website that is running in localhost. example:http://127.0.0.1:8080/ 
 
-
-
-cd "OneDrive\Desktop\MS Project\Tennis_Visualisation-main"
-.\venv\Scripts\activate
-.\bin\elasticsearch.bat
+To scrape live matches, command is "python src\scrappper.py --live" and for finished matches 
+	"python src\scrapper.py --finished --from_date 2021-02-03 --to_date 2021-02-04"
+Run app.py and tennis.py
